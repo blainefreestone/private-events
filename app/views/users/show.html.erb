@@ -1,0 +1,5 @@
+<h3><%= @user.username %></h3>
+
+<% @user.events.each do |event| %>
+    <%= render partial: "events/single_event" %>
+<% end %>
