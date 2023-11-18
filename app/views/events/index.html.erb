@@ -1,0 +1,9 @@
+<h2>Events:</h2>
+
+<% unless @events.exists? %>
+    No events to display... yet!
+<% else %>
+    <% @events.each do |event| %>
+        <div class="event"><%= render partial: "single_event", locals: [event: :event] %></div>
+    <% end %>
+<% end %>
