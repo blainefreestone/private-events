@@ -4,6 +4,6 @@
     No events to display... yet!
 <% else %>
     <% @events.each do |event| %>
-        <%= render partial: "single_event", locals: {event: event} %>
+        <%= render partial: "single_event", locals: {event: event, include_link: true} %>
     <% end %>
 <% end %>
