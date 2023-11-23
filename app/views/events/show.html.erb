@@ -1,1 +1,12 @@
 <%= render partial: "single_event", locals: {event: @event, include_event_link: false, include_attend_link: true} %>
+
+<h2>Attendees:</h2>
+<% unless @event.attendees.empty? %>
+    <ul>
+        <% @event.attendees.each do |attendee| %>
+            <li><%= attendee.email %></li>
+        <% end %>
+    </ul>
+<% else %>
+    Nobody is attending this event... yet.
+<% end %>

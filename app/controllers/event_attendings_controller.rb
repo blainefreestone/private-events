@@ -1,8 +1,5 @@
 class EventAttendingsController < ApplicationController
   before_action :authenticate_user!
-  
-  def new
-  end
 
   def create
     attended_event = Event.find(params[:attended_event_id])
@@ -13,9 +10,6 @@ class EventAttendingsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def update
   end
 
   def destroy
