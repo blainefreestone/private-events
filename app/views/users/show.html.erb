@@ -2,12 +2,28 @@
 
 <h2>User's Events:</h2>
 
-<% @user.created_events.each do |event| %>
+<h3>Future:</h3>
+
+<% @user.created_events.where("DATE(date_and_time) > ?", DateTime.now).each do |event| %>
+    <%= render partial: "events/single_event", locals: {event: event, include_event_link: true, include_attend_link: true} %>
+<% end %>
+
+<h3>Past:</h3>
+
+<% @user.created_events.where("DATE(date_and_time) < ?", DateTime.now).each do |event| %>
     <%= render partial: "events/single_event", locals: {event: event, include_event_link: true, include_attend_link: true} %>
 <% end %>
 
 <h2>Events this User is Attending:</h2>
 
-<% @user.attended_events.each do |event| %>
+<h3>Future:</h3>
+
+<% @user.attended_events.where("DATE(date_and_time) > ?", DateTime.now).each do |event| %>
+    <%= render partial: "events/single_event", locals: {event: event, include_event_link: true, include_attend_link: true} %>
+<% end %>
+
+<h3>Past:</h3>
+
+<% @user.attended_events.where("DATE(date_and_time) < ?", DateTime.now).each do |event| %>
     <%= render partial: "events/single_event", locals: {event: event, include_event_link: true, include_attend_link: true} %>
 <% end %>
