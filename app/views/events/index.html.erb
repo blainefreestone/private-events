@@ -1,9 +1,15 @@
 <h2>Events:</h2>
 
-<% unless @events.exists? %>
+<% unless @past_events.exists? || @future_events.exists? %>
     No events to display... yet!
 <% else %>
-    <% @events.each do |event| %>
+    <h3>Future</h3>
+    <% @future_events.each do |event| %>
+        <%= render partial: "single_event", locals: {event: event, include_event_link: true, include_attend_link: true} %>
+    <% end %>
+
+    <h3>Past</h3>
+    <% @past_events.each do |event| %>
         <%= render partial: "single_event", locals: {event: event, include_event_link: true, include_attend_link: true} %>
     <% end %>
 <% end %>
